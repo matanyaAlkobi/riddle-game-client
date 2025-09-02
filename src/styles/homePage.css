@@ -1,0 +1,7 @@
+.navigation-buttons {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    gap: 20px;
+    flex-direction: column;
+}
