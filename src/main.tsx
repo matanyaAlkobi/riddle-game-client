@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage.tsx'
 import LevelPage from './pages/LevelPage.tsx'
 import AdminPage from './pages/AdminPage.tsx'
 import UserPage from './pages/UserPage.tsx'
+import PlayGame from './pages/PlayGame.tsx'
 
 
 createRoot(document.getElementById('root')!).render(
@@ -22,6 +23,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/leaderboard" element={<LeaderBoardPage />} />
         <Route path='/admin' element={<AdminPage/>}/>
         <Route path='/user'  element={<UserPage/>}/>
+        <Route path='/game' element={<PlayGame/>}/>
       </Routes>
     </BrowserRouter>
   </StrictMode>,
