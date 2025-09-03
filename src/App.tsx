@@ -1,14 +1,15 @@
-import './App.css'
-import HomePage from './pages/HomePage'
+import "./App.css";
+import UsersDBProvider from "./context/users.db.context";
+import HomePage from "./pages/HomePage";
 
 function App() {
-
   return (
     <>
-
-    <HomePage/>
+      <UsersDBProvider>
+        <HomePage/>
+      </UsersDBProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
