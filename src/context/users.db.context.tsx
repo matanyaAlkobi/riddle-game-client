@@ -5,21 +5,26 @@ import type { ReactNode } from "react";
 interface User {
   id: number;
   name: string;
+  email: string
   bestTime: number;
-  password: number;
+  password: string;
+  role: string;
 }
 
 interface UsersContextType {
   allUsers: User[];
-  setAllUsers: React.Dispatch<React.SetStateAction<User[]>>;
+  setAllUsers: (obj:User[])=>void;
 }
 
-export const usersDB = createContext<UsersContextType | undefined>(undefined);
+
+
+export const usersDB = createContext<UsersContextType>({allUsers:[],setAllUsers([]){}});
 
 export default function UsersDBProvider({ children }: { children: ReactNode }) {
   const [allUsers, setAllUsers] = useState<User[]>([
-    { id: 1, name: "piano", bestTime: 1.3, password: 1234 },
-    { id: 2, name: "a", bestTime: 2.4, password: 1234 }
+  { id:1,name: "David", email: "david@gmail.com", password: "1234", role: "admin" ,bestTime:1.2},
+  { id:2,name: "Sara", email: "sara@yahoo.com", password: "abcd", role: "user", bestTime:1.5},
+  { id:3,name: "Dana", email: "dana@gmail.com", password: "pass", role: "user", bestTime:1.6}
   ]);
 
   return (
