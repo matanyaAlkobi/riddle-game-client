@@ -1,11 +1,11 @@
-import { useRef, useState } from "react"
+import { useRef } from "react"
 
-type Riddle={
-    name:string,
-    taskDescription:string,
-    correctAnswer:string,
-    difficulty:string,
-}
+// type Riddle={
+//     name:string,
+//     taskDescription:string,
+//     correctAnswer:string,
+//     difficulty:string,
+// }
 
 export  default  function CreateRiddle(){
     const nameRef = useRef<HTMLInputElement>(null);
