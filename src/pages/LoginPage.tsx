@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { loginUser, signupUser } from "../services/authService";
 import "../styles/loginPage.css";
 
@@ -47,6 +47,8 @@ export default function LoginPage() {
 
   return (
     <div className="login-page">
+            <Link to="/home">home</Link>
+
       <div>
         <button onClick={() => setIsLogin(true)}>Sign in</button>
         <button onClick={() => setIsLogin(false)}>sign up</button>
@@ -61,6 +63,7 @@ export default function LoginPage() {
             placeholder="Enter your email"
             value={form.email}
             onChange={handleChange}
+            required
           />
         )}
         <input
@@ -70,6 +73,7 @@ export default function LoginPage() {
           placeholder="Enter your name"
           value={form.username}
           onChange={handleChange}
+          required
         />
         <input
         className="input"
@@ -78,6 +82,7 @@ export default function LoginPage() {
           placeholder="Enter your password"
           value={form.password}
           onChange={handleChange}
+          required
         />
         <button type="submit">Submit</button>
       </form>

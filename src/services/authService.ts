@@ -1,4 +1,4 @@
-const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:4545";
+const API_BASE = import.meta.env.VITE_API_URL;
 
 export type AuthResponse = {
   username: string;
