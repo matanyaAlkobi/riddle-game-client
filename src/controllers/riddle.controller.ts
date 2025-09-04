@@ -16,7 +16,7 @@ export async function viewRiddlesHandler() {
     const allRiddles = await response.json();
     return allRiddles;
   } catch (err) {
-    console.error("Error fetching riddles:", err.message);
+    console.error("Error fetching riddles:", (err as Error).message);
     return [];
   }
 }

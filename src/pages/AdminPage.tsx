@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import "../styles/adminPage.css";
 export default function AdminPage() {
   const [feedback, setFeedback] = useState("");
