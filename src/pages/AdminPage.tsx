@@ -13,6 +13,7 @@ export default function AdminPage() {
         break;
       case 2:
         setFeedback("You chose: Create a Riddle");
+        navigate("/create-riddle");
         break;
       case 3:
         setFeedback("You chose: View All Riddles");
