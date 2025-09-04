@@ -1,30 +1,27 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { loginUser, signupUser } from "../services/authService";
 import "../styles/loginPage.css";
 
-type FormState = {
-  username: string;
-  password: string;
-  email?: string;
-};
-
 export default function LoginPage() {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
-  const [form, setForm] = useState<FormState>({ username: "", password: "", email: "" });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setForm(prev => ({ ...prev, [name]: value }));
-  };
+  const usernameRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const username = usernameRef.current?.value || "";
+    const password = passwordRef.current?.value || "";
+    const email = emailRef.current?.value || "";
+
     try {
       const result = isLogin
-        ? await loginUser(form.username, form.password)
-        : await signupUser(form.username, form.password, form.email);
+        ? await loginUser(username, password)
+        : await signupUser(username, password, email);
 
       if (result.error) {
         alert(result.error);
@@ -47,41 +44,35 @@ export default function LoginPage() {
 
   return (
     <div className="login-page">
-            <Link to="/home">home</Link>
+      <Link to="/home">home</Link>
 
       <div>
-        <button onClick={() => setIsLogin(true)}>Sign in</button>
-        <button onClick={() => setIsLogin(false)}>sign up</button>
+        <button type="button" onClick={() => setIsLogin(true)}>Sign in</button>
+        <button type="button" onClick={() => setIsLogin(false)}>Sign up</button>
       </div>
 
       <form className="user-information" onSubmit={handleSubmit}>
         {!isLogin && (
           <input
-          className="input"
+            ref={emailRef}
+            className="login-input"
             type="email"
-            name="email"
             placeholder="Enter your email"
-            value={form.email}
-            onChange={handleChange}
             required
           />
         )}
         <input
-        className="input"
+          ref={usernameRef}
+          className="login-input"
           type="text"
-          name="username"
           placeholder="Enter your name"
-          value={form.username}
-          onChange={handleChange}
           required
         />
         <input
-        className="input"
+          ref={passwordRef}
+          className="login-input"
           type="password"
-          name="password"
           placeholder="Enter your password"
-          value={form.password}
-          onChange={handleChange}
           required
         />
         <button type="submit">Submit</button>

@@ -8,14 +8,33 @@ export type AuthResponse = {
 };
 
 export async function loginUser(username: string, password: string): Promise<AuthResponse> {
-  const res = await fetch(`${API_BASE}/user/login`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    credentials: "include",
-    body: JSON.stringify({ username, password }),
-  });
-  return res.json();
+  console.log("🔑 Attempting login for user:", username);
+
+  try {
+    const res = await fetch(`${API_BASE}/user/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include", // שולח cookies
+      body: JSON.stringify({ username, password }),
+    });
+
+    console.log("📡 Response status:", res.status);
+
+    if (!res.ok) {
+      const errorData = await res.json().catch(() => ({}));
+      console.warn("🚨 Login failed:", errorData);
+      throw new Error(errorData.error || "Login failed");
+    }
+
+    const data: AuthResponse = await res.json();
+    console.log("✅ Login successful:", data);
+    return data;
+  } catch (err: any) {
+    console.error("❌ Fetch error:", err.message);
+    throw err;
+  }
 }
+
 
 export async function signupUser(username: string, password: string, email?: string): Promise<AuthResponse> {
   const res = await fetch(`${API_BASE}/user/signup`, {
