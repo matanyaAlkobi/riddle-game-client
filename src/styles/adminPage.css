@@ -1,0 +1,50 @@
+.admin-page {
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  background: #fff;
+  display: flex;
+  gap: 20px;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  height: auto;
+  max-width: 400px;
+  justify-content: center;
+  margin: 2rem auto;
+}
+
+h2 {
+  text-decoration: none;
+  color: #6366f1;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 300px;
+  max-width: 400px;
+  cursor: pointer;
+}
+
+.menu-btn{
+padding: 0.6rem 1.2rem;
+border-radius: 50px;
+border: none;
+  background: #a855f7;
+color: white;
+font-size: 1rem;
+cursor: pointer;
+transition: all 0.3 ease;
+}
+
+.menu-btn:hover{
+  background: #7e22ce;
+}
+
+.feedback {
+  color: red;
+}

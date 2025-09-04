@@ -10,6 +10,7 @@ import LevelPage from "./pages/LevelPage.tsx";
 import AdminPage from "./pages/AdminPage.tsx";
 import UserPage from "./pages/UserPage.tsx";
 import PlayGame from "./pages/PlayGame.tsx";
+import ViewAllRiddels from "./pages/AllRiddels.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -18,11 +19,12 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/" element={<App />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="admin" element={<AdminPage />} />
-        <Route path="user" element={<UserPage />} />
+        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/user" element={<UserPage />} />
         <Route path="/level" element={<LevelPage />} />
         <Route path="/leaderboard" element={<LeaderBoardPage />} />
         <Route path="/game" element={<PlayGame />} />
+        <Route path="/all-riddles" element={<ViewAllRiddels/>}/>
       </Routes>
     </BrowserRouter>
   </StrictMode>
