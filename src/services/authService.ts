@@ -14,7 +14,7 @@ export async function loginUser(username: string, password: string): Promise<Aut
     const res = await fetch(`${API_BASE}/user/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      credentials: "include", // שולח cookies
+      credentials: "include", 
       body: JSON.stringify({ username, password }),
     });
 
@@ -25,7 +25,7 @@ export async function loginUser(username: string, password: string): Promise<Aut
       console.warn("🚨 Login failed:", errorData);
       throw new Error(errorData.error || "Login failed");
     }
-
+    console.log("🍪 Cookies visible in JS:", document.cookie);
     const data: AuthResponse = await res.json();
     console.log("✅ Login successful:", data);
     return data;
